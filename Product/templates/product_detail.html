@@ -1,13 +1,88 @@
-<h1>{{ product.title }}</h1>
-<p>{{ product.description }}</p>
-<p>Price: {{ product.price }}</p>
-<p>Discount: {{ product.discount_percent }}%</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a default font for the page */
+            background-color: #f8f9fa; /* Light background for the whole page */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add some padding to the body */
+        }
+        .post_list {
+            max-width: 300px; /* Max width for the product card */
+            padding: 20px; /* Inner padding */
+            background-color: rgb(250, 251, 252); /* Light background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center align text */
+        }
+        .product_title {
+            margin: 20px 0; /* Margin for spacing */
+        }
+        .edit-btn, .delete-btn {
+            display: inline-block; /* Make buttons inline */
+            margin: 5px; /* Space between buttons */
+        }
+        .edit-btn {
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for buttons */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 14px; /* Font size */
+            cursor: pointer; /* Pointer on hover */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+        .edit-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .delete-btn {
+            background-color: #dc3545; /* Red background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for buttons */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 14px; /* Font size */
+            cursor: pointer; /* Pointer on hover */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+        .delete-btn:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+        a {
+            text-decoration: none; /* Remove underline from links */
+        }
+        img {
+            max-width: 100%; /* Responsive image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Rounded corners for images */
+        }
+    </style>
+</head>
+<body>
+    <div class="">
+        <div class="post_list">
+            {% if product.image %}
+                <p>
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                </p>
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+            <div class="product_title">
+                <h1>{{ product.title }}</h1>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <p>Discount: {{ product.discount_percent }}%</p>
 
-{% if product.image %}
-    <p><img src="{{ product.image.url }}" alt="{{ product.title }}"></p>
-{% else %}
-    <p>No image available</p>
-{% endif %}
-
-<a href="{% url 'product_edit' product.pk %}">Edit</a>
-<a href="{% url 'product_delete' product.pk %}">Delete</a>
+                <a class="edit-btn" href="{% url 'product_edit' product.pk %}"><i class="fa-solid fa-pen"></i> Edit</a>
+                <a class="delete-btn" href="{% url 'product_delete' product.pk %}"><i class="fa-solid fa-trash"></i> Delete</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
