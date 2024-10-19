@@ -1,0 +1,13 @@
+<h1>{{ product.title }}</h1>
+<p>{{ product.description }}</p>
+<p>Price: {{ product.price }}</p>
+<p>Discount: {{ product.discount_percent }}%</p>
+
+{% if product.image %}
+    <p><img src="{{ product.image.url }}" alt="{{ product.title }}"></p>
+{% else %}
+    <p>No image available</p>
+{% endif %}
+
+<a href="{% url 'product_edit' product.pk %}">Edit</a>
+<a href="{% url 'product_delete' product.pk %}">Delete</a>
