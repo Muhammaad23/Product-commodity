@@ -6,7 +6,9 @@
     <title>Create Product</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 <style>
+
 body {
     font-family: Arial, sans-serif; /* Set a default font for the page */
     background-color: #f8f9fa; /* Light background for the whole page */
@@ -97,7 +99,7 @@ img {
     flex-grow: 1;
 }
 .navbar .search-bar button {
-    background-color: #FF9900;
+    background-color: #ffb84e;
     padding: 8px 10px;
     border: none;
     cursor: pointer;
@@ -154,6 +156,8 @@ nav{
 }
 .search_icon{
     width: 50px;
+    border-radius: 0 5px 5px 0;
+    color: rgb(63, 63, 63);
 }
 .all_nav{
     display: flex;
@@ -218,15 +222,78 @@ nav{
         </div>
     </div>
 </nav>
-<div class="all_nav">
-    <i style="font-size: 22px;" class="fas fa-bars"></i>
-    <h5>All</h5>
-    <a href="">Today's Deals</a>
-    <a href="">Customer Service</a>
-    <a href="">Registry</a>
-    <a href="">Gift Cards</a>
-    <a href="">Sell</a>
-</div>
+<!--    -->
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splide Slider Example</title>
+
+    <!-- Link to Splide CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+
+    <!-- Optional: Include your custom styles -->
+    <style>
+        .splide__slide{
+            width: 100%;                         /* Set slider width to 100% */
+            margin: auto;                        /* Center the slider horizontally */
+            height: 500px;                       /* Set a fixed height for the slider */
+            background-image: url('https://m.media-amazon.com/images/I/71qcoYgEhzL._SX3000_.jpg'); /* Set the background image */
+            background-size: cover;              /* Ensure the image covers the container */
+            background-position: center;  
+        }
+        .splide img {
+            display: block;                      /* Ensures the image is treated as a block element */
+            margin: auto;                        /* Center the image inside its container */
+            max-width: 100%;                     /* Ensure the image doesn't overflow */
+            height: auto;                        /* Maintain the image aspect ratio */
+        }
+        .splide__arrow {
+            height: 100%;
+            width: 10%;
+            background: none;
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+        .splide__arrow svg {
+            fill: rgb(255, 255, 255);
+            height: 2em;
+            width: 2em;
+        }
+    </style>
+</head>
+
+    <!-- Splide slider structure -->
+    <div class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"></li>
+                <li class="splide__slide"></li>
+                <li class="splide__slide"></li>
+                <li class="splide__slide"></li>
+                <li class="splide__slide"></li>
+                <li class="splide__slide"></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Include Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+    <!-- Initialize the Splide slider -->
+    <script>
+        var splide = new Splide('.splide', {
+    type: 'loop',  // Enable continuous looping
+});
+
+splide.mount();
+    </script>
+
+<!--    -->
     <div class="">
         <div class="post_list">
             {% if product.image %}
@@ -249,4 +316,5 @@ nav{
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 </html>
